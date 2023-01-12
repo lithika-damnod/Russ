@@ -1,0 +1,56 @@
+.hero-container { 
+    display: flex; 
+    width: 100vw; 
+    height: 100vh; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    padding-left: 150px; 
+    padding-right: 150px; 
+    box-sizing: border-box;
+
+    -webkit-user-select: none;        
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+}
+.hero-container .hero-title { 
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; 
+    font-size: 8rem; 
+    margin: 0;
+    margin-bottom: 1.3rem; 
+}
+.hero-container .hero-description { 
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400; 
+    font-size: 2rem; 
+    margin: 0;
+    text-align: justify;
+    margin-bottom: 3.5rem; 
+}
+.hero-container .try-it-btn-wrapper { 
+    display: flex; 
+    width: 130px; 
+    height: 70px; 
+    background-color: black; 
+    border-radius: 30px; 
+    justify-content: space-evenly;
+    align-items: center;
+}
+.try-it-btn-wrapper .text { 
+    color: white; 
+    font-size: 1.5rem; 
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400; 
+}
+
+.material-symbols-rounded {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 48; 
+    color: white; 
+    font-size: 2.1rem; 
+}
