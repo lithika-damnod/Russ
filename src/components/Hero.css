@@ -37,6 +37,7 @@
     border-radius: 30px; 
     justify-content: space-evenly;
     align-items: center;
+    cursor: pointer; 
 }
 .try-it-btn-wrapper .text { 
     color: white; 

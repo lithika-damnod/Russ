@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"; 
+import { motion, useAnimationControls } from "framer-motion"; 
 import "./Hero.css"; 
 
 function Hero() { 
@@ -35,11 +35,12 @@ function Hero() {
                     stiffness: 200, 
                     damping: 17,
                 }} 
+                onClick={handleTryButtonClick}
             >
                 <span className="text">
                     Try It
                 </span>
-                <motion.span class="material-symbols-rounded"
+                <motion.span className="material-symbols-rounded"
                     animate={{ 
                         y: [1, -2.5, 1] 
                     }} 
