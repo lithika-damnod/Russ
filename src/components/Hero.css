@@ -8,6 +8,7 @@
     padding-left: 150px; 
     padding-right: 150px; 
     box-sizing: border-box;
+    overflow: hidden;
 
     -webkit-user-select: none;        
     -moz-user-select: none; 
@@ -54,4 +55,11 @@
     'opsz' 48; 
     color: white; 
     font-size: 2.1rem; 
+}
+.mask-overlay { 
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+    background-color: #EAEBF2;
 }
