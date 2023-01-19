@@ -1,0 +1,56 @@
+.step-one-container { 
+    display: flex; 
+    grid-column: 1/-1; 
+    grid-row: 2/-1; 
+    width: 100%; 
+    height: 100%; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    padding-left: 150px; 
+    padding-right: 150px; 
+    box-sizing: border-box;
+    overflow: hidden;
+
+    -webkit-user-select: none;        
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+    margin-top: -3.5rem; 
+}
+.prompt-wrapper { 
+    display: flex; 
+    font-family: 'Poppins', sans-serif;
+    align-items: flex-start;
+}
+.prompt-wrapper .step-no-header { 
+    font-weight: 900; 
+    font-size: 5rem; 
+    margin-right: 1.2rem; 
+}
+.prompt-wrapper .step-prompt { 
+    font-weight: 600; 
+    font-size: 3rem; 
+}
+
+.user-input-section { 
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400; 
+    margin-top: 3rem; 
+}
+.user-input-section .btn { 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.7rem; 
+    padding: 0.7rem; 
+    background-color: black; 
+    color: white; 
+    border-radius: 1rem; 
+    margin: 0.7rem; 
+    cursor: pointer; 
+}
+.user-input-section .btn * { 
+    margin: 0; 
+    margin-right: 1rem; 
+}

@@ -8,7 +8,10 @@ function Hero() {
     const [maskOverlayVisibility, setMaskOverlayVisibility] = useState(false); 
 
     // event handlers
-    const handleTryButtonClick = () => { setMaskOverlayVisibility(!maskOverlayVisibility); }
+    const handleTryButtonClick = () => { 
+        // TODO: disable pointer events for the button 
+        setMaskOverlayVisibility(!maskOverlayVisibility); 
+    }
 
     return (
         <>
