@@ -5,3 +5,6 @@
 <h3 align="center" >
 Get instant answers to your questions about any text with Passage Q&A - an AI-powered reading companion that analyzes and summarizes any text you provide and answer questions based on the information in the passage
 </h3>
+
+<br>
+<img width="1552" alt="image" src="https://user-images.githubusercontent.com/61654812/213515799-076034c1-daa9-4d4e-a691-de415ccbf0ed.png">
