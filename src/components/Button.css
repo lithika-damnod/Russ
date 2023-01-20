@@ -1,0 +1,9 @@
+.custom-btn { 
+    display: block; 
+    padding: 0.6rem; 
+    font-family: 'Poppins', sans-serif;
+    padding-left: 1.6rem; 
+    padding-right: 1.6rem; 
+    cursor: pointer;
+}
+
