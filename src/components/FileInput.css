@@ -40,6 +40,7 @@
     justify-content: center;
     font-family: 'Poppins', sans-serif;
     cursor: pointer; 
+    transition: all ease-out 0.3s; 
 }
 .file-input-container .file-drop-region .description { 
     display: flex;
