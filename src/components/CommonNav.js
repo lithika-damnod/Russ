@@ -5,7 +5,7 @@ function CommonNav() {
     return (
         <>
             <div className="nav-wrapper">
-                Russ      
+                <span style={{ cursor: "pointer" }}>Russ</span>      
             </div>
         </>
     ); 
