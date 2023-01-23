@@ -1,5 +1,9 @@
 import {motion} from "framer-motion"; 
 import {useState} from "react"; 
+import { useDispatch } from "react-redux";
+
+// reducers 
+import { showStepOne } from "../features/view/viewSlice"; 
 
 // components
 import Button from "./Button"; 
@@ -11,6 +15,8 @@ import "./QAView.css";
 
 const letters = Array.from("To encourage further conversation and be even more polite, you want to ask about them, too. As you can see from the examples above, adding the question “How about you?” or “And what about you?” will give the other person an opportunity to respond. You’ll see this on most of the examples that follow.");
 function QAView() { 
+
+    const dispatch = useDispatch(); 
 
     // states 
     const [answerVisibility, setAnswerVisibility] = useState(false); 
@@ -34,7 +40,9 @@ function QAView() {
                     <div className="a-header">A.</div>
                     { answerVisibility &&  <AnswerContainer /> } 
                 </div>
-                <div className="side-btn-left">
+                <div className="side-btn-left"
+                    onClick={() => dispatch(showStepOne())}
+                >
                     <ArrowBackRoundedIcon style={{ fontSize: "2.2rem" }} />
                 </div>
                 <div className="side-btn-right">

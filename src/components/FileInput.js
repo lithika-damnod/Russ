@@ -6,8 +6,15 @@ import "./FileInput.css";
 // components 
 import Button from "./Button"; 
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
+import { useDispatch } from "react-redux";
+
+// reducers 
+import { showStepOne, showQAView } from "../features/view/viewSlice"; 
 
 function FileInput() { 
+
+    const dispatch = useDispatch(); 
+
     // states 
     const [draggingOver, setDraggingOver] = useState(false); 
     const [regionColor, setRegionColor] = useState("#D9D9D9"); 
@@ -69,8 +76,12 @@ function FileInput() {
                     </div>
                 </div>
                 <div className="btn-section">
-                    <Button id="prev-btn" backgroundColor="#000000cf">Back</Button>
-                    <Button id="next-btn">Next</Button>
+                    <Button id="prev-btn" backgroundColor="#000000cf"
+                        onClick={() => dispatch(showStepOne())}
+                    >Back</Button>
+                    <Button id="next-btn"
+                        onClick={() => dispatch(showQAView())}
+                    >Next</Button>
                 </div>
             </div>
         </>

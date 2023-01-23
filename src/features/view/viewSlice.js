@@ -12,21 +12,37 @@ export const viewSlice= createSlice({
     reducers: { 
         showHero: (state) => { 
             state.hero = true; 
+            state.stepone = false; 
+            state.textinput = false; 
+            state.fileinput = false;  
+            state.qaview = false; 
         }, 
         showStepOne: (state) => { 
             state.hero = false; 
             state.stepone = true; 
+            state.textinput = false; 
+            state.fileinput = false;  
+            state.qaview = false; 
         }, 
         showTextInput: (state) => { 
             state.hero = false; 
+            state.stepone = false; 
             state.textinput = true; 
+            state.fileinput = false;  
+            state.qaview = false; 
         }, 
         showFileInput: (state) => { 
             state.hero = false; 
-            state.fileinput = true; 
+            state.stepone = false; 
+            state.textinput = false; 
+            state.fileinput = true;  
+            state.qaview = false; 
         }, 
         showQAView: (state) => { 
             state.hero = false; 
+            state.stepone = false; 
+            state.textinput = false; 
+            state.fileinput = false;  
             state.qaview = true; 
         }, 
     }, 
