@@ -1,21 +1,32 @@
-import {useState} from "react"; 
+import { useSelector } from 'react-redux';
+
 // css 
 import './App.css';
+
 // components 
 import Hero from "./components/Hero"; 
 import StepOne from "./components/StepOne";  
 import CommonNav from "./components/CommonNav"; 
-import TextInput from './components/TextInput';
-import FileInput from './components/FileInput';
-import QAView from './components/QAView';
+import TextInput from "./components/TextInput";
+import FileInput from "./components/FileInput";
+import QAView from "./components/QAView";
 
 function App() {
-  // veiw states 
-  const [heroVisibility, setHeroVisibility] = useState(true);  // initially true 
-  const [stepOneVisibility, setStepOneVisibility] = useState(false);   
-  const [textInputVisibility, setTextInputVisibility] = useState(false);   
-  const [fileInputVisibility, setFileInputVisibility] = useState(false);   
-  const [QAViewVisibility, setQAViewVisibility] = useState(false);   
+
+  // redux states 
+  const heroVisibility = useSelector((state) => state.view.hero); 
+  const stepOneVisibility = useSelector((state) => state.view.stepone); 
+  const textInputVisibility = useSelector((state) => state.view.textinput); 
+  const fileInputVisibility = useSelector((state) => state.view.fileinput); 
+  const QAViewVisibility = useSelector((state) => state.view.qaview); 
+  
+  console.log({
+      "hero": heroVisibility, 
+      "firststep": stepOneVisibility, 
+      "textinput": textInputVisibility ,
+      "fileinput": fileInputVisibility, 
+      "qaview": QAViewVisibility, 
+  }); 
 
   return (
     <div className="main-wrapper">

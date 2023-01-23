@@ -1,8 +1,14 @@
 import { useState } from "react"; 
 import { motion } from "framer-motion"; 
+import { useSelector, useDispatch } from "react-redux";
 import "./Hero.css"; 
 
+// reducers 
+import { showStepOne } from "../features/view/viewSlice"; 
+
 function Hero() { 
+
+    const dispatch = useDispatch(); 
 
     // states 
     const [maskOverlayVisibility, setMaskOverlayVisibility] = useState(false); 
@@ -11,6 +17,7 @@ function Hero() {
     const handleTryButtonClick = () => { 
         // TODO: disable pointer events for the button 
         setMaskOverlayVisibility(!maskOverlayVisibility); 
+        dispatch(showStepOne()); // change view 
     }
 
     return (
