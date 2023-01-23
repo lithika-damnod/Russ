@@ -1,4 +1,9 @@
+import { useState } from "react"; 
 import { motion } from "framer-motion"; 
+import { useDispatch } from "react-redux";
+
+// reducers 
+import { showFileInput, showTextInput } from "../features/view/viewSlice"; 
 
 // css
 import "./StepOne.css"; 
@@ -10,6 +15,7 @@ import KeyboardAltOutlinedIcon from '@mui/icons-material/KeyboardAltOutlined';
 
 function StepOne() { 
 
+    const dispatch = useDispatch(); 
     return (
         <>
             <div className="step-one-container">
@@ -26,6 +32,7 @@ function StepOne() {
                         stiffness: 200, 
                         damping: 17,
                     }} 
+                    onClick={() => dispatch(showFileInput())}
                 >
                     <p>Scan using photos</p>
                     <CameraAltOutlinedIcon />
@@ -38,6 +45,7 @@ function StepOne() {
                         stiffness: 200, 
                         damping: 17,
                     }} 
+                    onClick={() => dispatch(showTextInput())}
                 >
                     <p>Type text using keyboard</p>
                     <KeyboardAltOutlinedIcon />
