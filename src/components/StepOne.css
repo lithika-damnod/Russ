@@ -1,10 +1,13 @@
 .step-one-wrapper { 
+    display: flex;
     grid-column: 1/-1;
     grid-row: 3/-1; 
     width: 100%; 
     height: auto; 
     padding: 1rem 1.5rem 1rem 1.5rem;
     box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
 
     -webkit-user-select: none;        
     -moz-user-select: none; 
@@ -17,10 +20,12 @@
     text-align: center;
     font-size: 2rem;
     margin-top: 1rem; 
+    max-width: 600px;
 }
 .step-one-wrapper .mob-input-options {
     display: flex; 
     flex-direction: column;
+    width: 100%; 
     padding: 15px; 
     align-items: center;
     margin-top: 1.5rem; 
@@ -29,6 +34,7 @@
     width: 82%; 
     height: 1px; 
     background-color: rgba(0, 0, 0, 0.127);
+    max-width: 450px;
 }
 .step-one-wrapper .mob-input-options .option-wrapper {  
     display: flex; 
@@ -78,5 +84,36 @@
     
     .step-one-wrapper .mob-input-options .option-wrapper {  
         font-size: 0.9rem;
+    }
+}
+@media only screen and (min-width: 800px) {
+    .step-one-wrapper .mob-input-options .h-option-divider { display: none; }
+    .step-one-wrapper .mob-input-options .option-wrapper {  
+        flex-direction: column-reverse;
+        max-width: 200px;
+    }
+    .step-one-wrapper .mob-input-options .option-wrapper:nth-child(2) { 
+        flex-direction: column;
+    }
+    .step-one-wrapper .mob-input-options .option-wrapper .option-frame-container {  
+        margin: 1rem; 
+    }
+    .step-one-wrapper .mob-input-options {
+        flex-direction: row;
+        width: 100%; 
+        padding: 15px; 
+        align-items: center;
+        justify-content: center;
+        margin-top: 1.5rem; 
+    }  
+    .step-one-wrapper .position-controllers {
+        margin-top: 4rem; 
+    }
+}
+@media only screen and (min-height: 610px) {
+    .step-one-wrapper { 
+        height: calc(100vh - 81px); 
+        justify-content: center;
+        max-height: 800px;
     }
 }

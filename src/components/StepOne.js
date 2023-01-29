@@ -42,11 +42,11 @@ function StepOne() {
                         </div>
                     </div>
                     <div className="h-option-divider"></div>
-                    <div className="position-controllers">
-                        <Button id="prev-btn" backgroundColor="#000000cf"
-                            onClick={() => dispatch(showHero())}
-                        >Back</Button>
-                    </div>
+                </div>
+                <div className="position-controllers">
+                    <Button id="prev-btn" backgroundColor="#000000cf"
+                        onClick={() => dispatch(showHero())}
+                    >Back</Button>
                 </div>
             </div>
         </>
