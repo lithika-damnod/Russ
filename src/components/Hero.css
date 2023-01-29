@@ -58,6 +58,15 @@
 }
 
 
+.mask-overlay { 
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+    background-color: #EAEBF2;
+}
+
+
 /* media queries */ 
 @media only screen and (min-width: 1000px) {
     .hero-wrapper { 

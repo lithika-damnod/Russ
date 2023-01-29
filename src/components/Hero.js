@@ -69,6 +69,7 @@ function Hero() {
                     </motion.div>
                 </div>
             </div>
+            { maskOverlayVisibility &&  <MaskOverlay /> } 
         </>
     )
 }
