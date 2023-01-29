@@ -7,4 +7,4 @@ Get instant answers to your questions about any text with Passage Q&A - an AI-po
 </h3>
 
 <br>
-<img width="1552" alt="image" src="https://user-images.githubusercontent.com/61654812/213515799-076034c1-daa9-4d4e-a691-de415ccbf0ed.png">
+<img width="1466" alt="image" src="https://user-images.githubusercontent.com/61654812/215338006-80d60048-cf0d-4fd9-a613-7ccf09acd6d5.png">
