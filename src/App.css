@@ -2,4 +2,5 @@
   display: grid; 
   grid-template-columns: 100vw;
   grid-template-rows: 80px 1px auto;
+  box-sizing: border-box;
 }

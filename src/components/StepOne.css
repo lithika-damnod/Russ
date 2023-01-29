@@ -1,56 +1,82 @@
-.step-one-container { 
-    display: flex; 
-    grid-column: 1/-1; 
-    grid-row: 2/-1; 
+.step-one-wrapper { 
+    grid-column: 1/-1;
+    grid-row: 3/-1; 
     width: 100%; 
-    height: 100%; 
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    padding-left: 150px; 
-    padding-right: 150px; 
+    height: auto; 
+    padding: 1rem 1.5rem 1rem 1.5rem;
     box-sizing: border-box;
-    overflow: hidden;
 
     -webkit-user-select: none;        
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none;
-    margin-top: -3.5rem; 
 }
-.prompt-wrapper { 
-    display: flex; 
+.step-one-wrapper .prompt {  
     font-family: 'Poppins', sans-serif;
-    align-items: flex-start;
-}
-.prompt-wrapper .step-no-header { 
-    font-weight: 900; 
-    font-size: 5rem; 
-    margin-right: 1.2rem; 
-}
-.prompt-wrapper .step-prompt { 
     font-weight: 600; 
-    font-size: 3rem; 
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem; 
+}
+.step-one-wrapper .mob-input-options {
+    display: flex; 
+    flex-direction: column;
+    padding: 15px; 
+    align-items: center;
+    margin-top: 1.5rem; 
+}  
+.step-one-wrapper .mob-input-options .h-option-divider {  
+    width: 82%; 
+    height: 1px; 
+    background-color: rgba(0, 0, 0, 0.127);
+}
+.step-one-wrapper .mob-input-options .option-wrapper {  
+    display: flex; 
+    width: 100%; 
+    justify-content: center;
+    align-items: center;
+    padding: 1rem; 
+    cursor: pointer; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    border-radius: 1rem; 
+    transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) .2s;
+}
+.step-one-wrapper .mob-input-options .option-wrapper:hover {  
+    background-color: rgba(224, 224, 224, 0.35);
+}
+.step-one-wrapper .mob-input-options .option-wrapper:active {  
+    background-color: rgb(208, 207, 207);
+}
+.step-one-wrapper .mob-input-options .option-wrapper .option-frame-container {  
+    display: flex;
+    width: 110px; 
+    height: 100px; 
+    justify-content: center;
+    align-items: center;
+    background-color: #dadada;
+    border: 1px solid black; 
+    border-radius: 32px;
 }
 
-.user-input-section { 
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400; 
-    margin-top: 3rem; 
-}
-.user-input-section .btn { 
+.step-one-wrapper .position-controllers {
     display: flex; 
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.7rem; 
-    padding: 0.7rem; 
-    background-color: black; 
-    color: white; 
-    border-radius: 1rem; 
-    margin: 0.7rem; 
-    cursor: pointer; 
+    width: 100%;
+    justify-content: center;
+    margin-top: 5.5rem; 
+    margin-bottom: 2rem; 
 }
-.user-input-section .btn * { 
-    margin: 0; 
-    margin-right: 1rem; 
+
+
+/* media queries */ 
+@media only screen and (max-width: 400px) {
+    .step-one-wrapper .mob-input-options .option-wrapper {  
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width: 370px) {
+    
+    .step-one-wrapper .mob-input-options .option-wrapper {  
+        font-size: 0.9rem;
+    }
 }

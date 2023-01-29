@@ -1,55 +1,53 @@
-import { motion } from "framer-motion"; 
 import { useDispatch } from "react-redux";
 
+// components
+import Button from "./Button"; 
+
 // reducers 
-import { showFileInput, showTextInput } from "../features/view/viewSlice"; 
+import { showHero, showFileInput, showTextInput } from "../features/view/viewSlice"; 
 
 // css
 import "./StepOne.css"; 
 
-// icons 
-import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
-import KeyboardAltOutlinedIcon from '@mui/icons-material/KeyboardAltOutlined';
-
+// mui icons 
+import KeyboardAltRoundedIcon from '@mui/icons-material/KeyboardAltRounded';
+import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 
 function StepOne() { 
 
     const dispatch = useDispatch(); 
     return (
         <>
-            <div className="step-one-container">
-            <div className="prompt-wrapper">
-                <div className="step-no-header">1.</div>
-                <div className="step-prompt">Ready to get answers to your questions? Insert your text here</div> 
-            </div>
-            <div className="user-input-section">
-                <motion.div className="btn scan-btn"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ 
-                        type: "spring", 
-                        stiffness: 200, 
-                        damping: 17,
-                    }} 
-                    onClick={() => dispatch(showFileInput())}
-                >
-                    <p>Scan using photos</p>
-                    <CameraAltOutlinedIcon />
-                </motion.div>
-                <motion.div className="btn insert-btn"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ 
-                        type: "spring", 
-                        stiffness: 200, 
-                        damping: 17,
-                    }} 
-                    onClick={() => dispatch(showTextInput())}
-                >
-                    <p>Type text using keyboard</p>
-                    <KeyboardAltOutlinedIcon />
-                </motion.div>
-            </div>
+            <div className="step-one-wrapper">
+                <div className="prompt">
+                    Ready to get answers to your questions? Insert your text here
+                </div>
+                <div className="mob-input-options">
+                    <div className="h-option-divider"></div>
+                    <div className="option-wrapper"
+                        onClick={() => dispatch(showFileInput())}
+                    >
+                        <div className="option-frame-container" style={{ marginRight: "1.5rem" }}>
+                            <ImageRoundedIcon style={{ fontSize: "3rem" }} />
+                        </div>
+                        Browse and Scan 
+                    </div>
+                    <div className="h-option-divider"></div>
+                    <div className="option-wrapper"
+                        onClick={() => dispatch(showTextInput())}
+                    >
+                        Type using Keyboard
+                        <div className="option-frame-container" style={{ marginLeft: "1.5rem" }}>
+                            <KeyboardAltRoundedIcon style={{ fontSize: "3rem" }} />
+                        </div>
+                    </div>
+                    <div className="h-option-divider"></div>
+                    <div className="position-controllers">
+                        <Button id="prev-btn" backgroundColor="#000000cf"
+                            onClick={() => dispatch(showHero())}
+                        >Back</Button>
+                    </div>
+                </div>
             </div>
         </>
     )
