@@ -36,7 +36,7 @@ function App() {
       { stepOneVisibility && (
         <>
           <CommonNav />
-          <StepOne />
+          <StepOne /> 
         </>
       )}
 

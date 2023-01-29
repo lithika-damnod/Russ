@@ -11,11 +11,14 @@ function CommonNav() {
     const dispatch = useDispatch(); 
     return (
         <>
-            <div className="nav-wrapper">
-                <span style={{ cursor: "pointer" }}
-                    onClick={() => dispatch(showHero())}
-                >Russ</span>      
+            <div className="nav">
+                <div className="logo"
+                    onClick={() => dispatch(showHero())} 
+                >Russ</div>
             </div>
+            <div className="horizontal-divider-wrapper">
+                <div className="horizontal-divider"></div>
+            </div> 
         </>
     ); 
 }
