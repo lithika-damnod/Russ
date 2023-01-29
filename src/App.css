@@ -1,5 +1,5 @@
 .main-wrapper { 
   display: grid; 
   grid-template-columns: 100vw;
-  grid-template-rows: 100px calc(100vh - 100px);
+  grid-template-rows: 100px auto;
 }

@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 body {
   background-color: #EAEBF2; 
   margin: 0; 
+  width: 100%; 
+  height: 100%; 
+}
+#root { 
+  width: 100%; 
+  height: 100%; 
 }
