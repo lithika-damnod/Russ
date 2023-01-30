@@ -112,7 +112,6 @@
 }
 @media only screen and (min-height: 610px) {
     .step-one-wrapper { 
-        height: calc(100vh - 81px); 
         justify-content: center;
         max-height: 800px;
     }
