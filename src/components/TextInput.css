@@ -1,56 +1,67 @@
-.text-input-container { 
-    display: flex; 
-    grid-column: 1/-1; 
-    grid-row: 2/-1; 
+.text-input-wrapper { 
+    display: flex;
+    grid-column: 1/-1;
+    grid-row: 3/-1; 
     width: 100%; 
-    height: 100%; 
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    padding-left: 150px; 
-    padding-right: 150px; 
+    height: auto; 
+    padding: 1rem 1.5rem 1rem 1.5rem;
     box-sizing: border-box;
-    overflow: hidden;
-    margin-top: -1.15rem; 
+    flex-direction: column;
+    align-items: center;
 
     -webkit-user-select: none;        
     -moz-user-select: none; 
     -ms-user-select: none; 
-    user-select: none;
+    user-select: none;   
 }
-.text-input-container .prompt-wrapper { 
-    display: flex; 
+.text-input-wrapper .prompt {  
     font-family: 'Poppins', sans-serif;
-    align-items: flex-start;
-    margin: 2rem; 
+    font-weight: 600; 
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem; 
+    max-width: 700px;
 }
-.text-input-container .prompt-wrapper .prompt-text { 
-    font-size: 3rem; 
-}
-
-.text-input-container .input-textarea {
-    width: 90%; 
-    height: 45%; 
-    border-radius: 1rem;
+.text-input-wrapper .input-textarea {  
+    padding: 1rem;
+    width: 100%; 
+    max-width: 700px;
+    height: 400px; 
+    margin-top: 2rem; 
     border: none; 
+    border: 1px solid black; 
+    background-color: #f3f2f28d;
     resize: none; 
     overflow-y: scroll; 
     box-sizing: border-box;
-    padding: 1rem; 
     font-size: 1.3rem;
     font-family: 'Poppins', sans-serif;
     transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s; 
 }
-
-.text-input-container .input-textarea:focus {
+.text-input-wrapper .input-textarea:focus { 
     outline: none !important; 
-    box-shadow: 0 0 5px #3c3b3b;
+    box-shadow: 0 0 5px #3c3b3b51; 
 }
-
-.btn-section { 
-    display: flex; 
-    margin-top: 2.2rem; 
+.text-input-wrapper .position-controllers { 
+    margin-top: 3rem; 
+    margin-bottom: 2rem; 
+    display: flex;   
+} 
+.text-input-wrapper .position-controllers * { 
+    margin: 1rem; 
 }
-.btn-section * { 
-    margin: 0.3rem;
+@media only screen and (min-height: 750px) {
+    .text-input-wrapper { 
+        height: calc(100vh - 81px); 
+        justify-content: center;
+        max-height: 800px;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .text-input-wrapper .position-controllers { 
+        flex-direction: column;
+    }
+    .text-input-wrapper .position-controllers * { 
+        margin: 0.5rem; 
+    }
 }
