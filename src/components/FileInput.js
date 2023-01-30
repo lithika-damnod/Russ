@@ -54,28 +54,26 @@ function FileInput() {
 
     return (
         <>
-            <div className="file-input-container">
-                <div className="prompt-wrapper">
-                    <span className="prompt-text">
-                        Snap a photo of your passage and drag it here to upload
-                    </span>
+            <div className="file-input-wrapper">
+                <div className="prompt">
+                    Snap a photo of your passage and drag it here to upload
                 </div>
-                <div className="file-drop-region" 
+                <div className="file-drop-region"
                     onClick={handleFileInputs}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
-                    style={{backgroundColor: regionColor}}
+                    style={{backgroundColor: regionColor}} 
                 >
                     <input type="file" ref={fileInputRef} style={{ display: "none" }} />
-                    <FileUploadRoundedIcon style={{ fontSize: "4rem", color: "rgba(128, 120, 120, 0.62)"}} /> 
+                    <FileUploadRoundedIcon style={{ fontSize: "3.7rem", color: "rgba(128, 120, 120, 0.8)" }} />
                     <div className="description">
                         <span id="line1">Drag and Drop here</span>
                         <span id="line2">Or</span>
                         <span id="line3">Browse files</span>
                     </div>
                 </div>
-                <div className="btn-section">
+                <div className="position-controllers">
                     <Button id="prev-btn" backgroundColor="#000000cf"
                         onClick={() => dispatch(showStepOne())}
                     >Back</Button>
