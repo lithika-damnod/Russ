@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import ReactGA from "react-ga"; 
 
 // css 
 import './App.css';
@@ -20,13 +22,12 @@ function App() {
   const fileInputVisibility = useSelector((state) => state.view.fileinput); 
   const QAViewVisibility = useSelector((state) => state.view.qaview); 
   
-  console.log({
-      "hero": heroVisibility, 
-      "firststep": stepOneVisibility, 
-      "textinput": textInputVisibility ,
-      "fileinput": fileInputVisibility, 
-      "qaview": QAViewVisibility, 
-  }); 
+  useEffect(()=> { 
+    console.log(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID); 
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID)
+    ReactGA.pageview('/')
+  }, [])
+
 
   return (
     <div className="main-wrapper">
