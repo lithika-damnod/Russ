@@ -106,7 +106,17 @@ function AnswerContainer() {
                 <div>
                     Try Another
                 </div> 
-                <motion.div style={{ display: "flex", color: "black" }}>
+                <motion.div style={{ display: "flex", color: "black" }}
+                    animate={{ 
+                        x: [3, 0, 3] 
+                    }} 
+                    transition={{
+                        duration: 0.5, 
+                        ease: "easeInOut", 
+                        repeat: Infinity, 
+                        repeatDelay: 0.6, 
+                    }} 
+                >
                     <ArrowRightAltRoundedIcon fontSize="large" style={{  margin: "0" }} />
                 </motion.div> 
             </motion.div>
