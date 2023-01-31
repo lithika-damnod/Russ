@@ -23,7 +23,6 @@ function App() {
   const QAViewVisibility = useSelector((state) => state.view.qaview); 
   
   useEffect(()=> { 
-    console.log(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID); 
     ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID)
     ReactGA.pageview('/')
   }, [])
