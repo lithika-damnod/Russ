@@ -1,6 +1,7 @@
 import { useState } from "react"; 
 import { motion } from "framer-motion"; 
 import { useDispatch } from "react-redux";
+import ReactGA from "react-ga"; 
 import "./Hero.css"; 
 
 // mui icons 
@@ -19,6 +20,12 @@ function Hero() {
     // event handlers
     const handleTryButtonClick = () => { 
         // TODO: disable pointer events for the button 
+        
+        ReactGA.event({
+            category: 'Button', 
+            action: 'Clicked on Try It Button'
+        })
+
         setMaskOverlayVisibility(!maskOverlayVisibility); 
         dispatch(showStepOne()); // change view 
     }
