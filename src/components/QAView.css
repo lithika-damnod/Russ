@@ -1,132 +1,96 @@
-.qa-container { 
-    display: flex; 
-    grid-column: 1/-1; 
-    grid-row: 2/-1; 
-    grid-template-columns: 100%;
-    grid-template-rows: 3fr 1fr 4fr;
+.qa-wrapper { 
+    display: flex;
+    grid-column: 1/-1;
+    grid-row: 3/-1; 
     width: 100%; 
-    height: 100%; 
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    padding-left: 150px; 
-    padding-right: 150px; 
+    height: auto; 
+    padding: 1rem 1.5rem 1rem 1.5rem;
     box-sizing: border-box;
-    overflow: hidden;
-    padding-top: 5rem; 
+    flex-direction: column;
+    align-items: center;
 
     -webkit-user-select: none;        
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none;
-    margin-top: -3.5rem; 
-} 
-.qa-container .prompt-wrapper { 
-    grid-column: 1/-1;
-    grid-row: 1/2;  
-    display: flex; 
+}
+.qa-wrapper .prompt { 
     font-family: 'Poppins', sans-serif;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    font-weight: 600; 
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem; 
+    max-width: 600px;
 }
-.qa-container .submit-space { 
-    grid-column: 1/-1;
-    grid-row: 2/3; 
-}
-.qa-container .prompt-wrapper .q-header { 
-    font-weight: 900; 
-    font-size: 5rem; 
-    margin-right: 1.2rem; 
-}
-.qa-container .prompt-wrapper .q-input { 
-    width: 80%; 
-    height: 65%; 
+.qa-wrapper .question-input { 
+    padding: 1rem;
+    width: 100%; 
+    max-width: 700px;
+    height: 200px; 
+    margin-top: 2rem; 
     border: none; 
+    border: 1px solid black; 
+    background-color: #f3f2f28d;
     resize: none; 
     overflow-y: scroll; 
-    background-color: #D9D9D9;
     box-sizing: border-box;
-    padding: 1rem; 
+    font-size: 1.3rem;
     font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    border-radius: 10px; 
-    caret-color: rgb(103, 0, 0);
+    transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s; 
 }
-.qa-container .prompt-wrapper .q-input:focus { 
-    outline: none; 
+.qa-wrapper .question-input:focus { 
+    outline: none !important; 
+    box-shadow: 0 0 5px #3c3b3b51; 
 }
-
-.qa-container .answer-prompt-wrapper { 
-    display: flex; 
-    font-family: 'Poppins', sans-serif;
-    align-items: flex-start;
-    width: 100%;
-    height: 100%;
-    margin: 0; 
-    grid-row: 3/-1; 
-    grid-column: 1/-1;
-    margin-top: 1rem;
+.qa-wrapper .position-controllers { 
+    display: flex;
+    margin-top: 2.5rem; 
+    margin-bottom: 2.6rem; 
 }
-
-.qa-container .answer-prompt-wrapper .a-header { 
-    font-weight: 900; 
-    font-size: 5rem; 
-    margin-left: 2rem;
-    margin-right: 1.5rem; 
-}
-.qa-container .answer-prompt-wrapper .a-container { 
-    display: block; 
-    width: 80%; 
-    height: 60%; 
-    position: relative; 
-    top: 3rem;
-    font-weight: 400; 
-    font-size: 1.2rem; 
-    overflow-y: scroll; 
-}
-
-
-
-.side-btn-right { 
-    display: flex; 
-    width: 20vw; 
+.qa-wrapper .position-controllers .custom-back-btn { 
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 5rem 0.5rem 0.8rem; 
+    cursor: pointer;
+    margin-right: 0.25rem; 
+    padding: 1rem; 
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.qa-wrapper .answer-text { 
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    color: white; 
-    background-color: black;
-    cursor: pointer; 
-    position: absolute; 
-    right: 0; 
-    bottom: 2rem; 
-    outline: 1px solid black;
-    transition: all cubic-bezier(0.23, 1, 0.320, 1)  0.3s;
+    margin-bottom: 2rem; 
+    text-align: justify;
+    font-size: 1.1rem; 
+    max-width: 700px;
 }
-.side-btn-right:hover {
-    background-color: white; 
-    color: black; 
-}
-.side-btn-left { 
+.qa-wrapper .try-another-btn { 
     display: flex; 
-    width: 5vw; 
-    background-color: black;
-    color: white; 
-    justify-content: flex-end; 
-    padding: 0.5rem 2rem 0.5rem 0.8rem; 
-    position: absolute;
-    left: 0; 
-    bottom: 2rem; 
+    width: 100%; 
+    font-family: 'Poppins', sans-serif;
+    background-color: rgba(255, 255, 255, 0.631);
+    padding: 0.5rem 2rem 0.5rem 2rem; 
+    color: black;
+    border: 1px solid black; 
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
     cursor: pointer;
-    opacity: 0.85; 
     transition: all cubic-bezier(0.23, 1, 0.320, 1)  0.3s;
-    outline: 1px solid black; 
 }
-.side-btn-left:hover { 
-    background-color: white; 
-    color: black; 
+.qa-wrapper .try-another-btn:hover { 
+    background-color: white;
+}
+
+@media only screen and (min-height: 750px) and (max-height: 1000px ) and (min-width: 780px) {
+    .qa-wrapper { 
+        height: calc(100vh - 81px); 
+        justify-content: center;
+        max-height: 800px;
+    }
+}
+@media only screen and (min-width: 700px) {
+    .qa-wrapper .try-another-btn { 
+        max-width: 300px; 
+    }
 }

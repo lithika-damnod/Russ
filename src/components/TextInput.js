@@ -13,14 +13,12 @@ function TextInput() {
     const dispatch = useDispatch(); 
     return (
         <>
-            <div className="text-input-container">
-                <div className="prompt-wrapper">
-                    <span className="prompt-text">
-                        Your passage awaits to be unlocked, please type it in the input box provided
-                    </span>
+            <div className="text-input-wrapper">
+                <div className="prompt">
+                    Your passage awaits to be unlocked, please type it in the input box provided
                 </div>
                 <textarea className="input-textarea"></textarea>
-                <div className="btn-section">
+                <div className="position-controllers">
                     <Button id="prev-btn" backgroundColor="#000000cf"
                         onClick={() => dispatch(showStepOne())}
                     >Back</Button>

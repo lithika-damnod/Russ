@@ -13,7 +13,7 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 // css 
 import "./QAView.css"; 
 
-const letters = Array.from("To encourage further conversation and be even more polite, you want to ask about them, too. As you can see from the examples above, adding the question “How about you?” or “And what about you?” will give the other person an opportunity to respond. You’ll see this on most of the examples that follow.");
+const letters = Array.from("Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquamnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit, quia. Quo neque error repudiandae fuga?"); 
 function QAView() { 
 
     const dispatch = useDispatch(); 
@@ -28,27 +28,27 @@ function QAView() {
 
     return (
         <>
-            <div className="qa-container">
-                <div className="prompt-wrapper">
-                    <div className="q-header">Q.</div>
-                    <textarea className="q-input" autoFocus></textarea>
+            <div className="qa-wrapper">
+                <div className="prompt">
+                    Type your question below
                 </div>
-                <div className="submit-space">
-                    <Button onClick={handleSubmitClicks}>See Answer</Button>
+                <textarea className="question-input"></textarea>
+                <div className="position-controllers">
+                    <motion.div className="custom-back-btn"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ 
+                            type: "spring", 
+                            stiffness: 200, 
+                            damping: 17,
+                        }} 
+                        onClick={() => dispatch(showStepOne())}
+                    >
+                        <ArrowBackRoundedIcon style={{ color: "white" }} /> 
+                    </motion.div>
+                    <Button id="submit-btn" fontSize="1rem" borderRadius="0" onClick={handleSubmitClicks} >See Answer</Button>
                 </div>
-                <div className="answer-prompt-wrapper"> 
-                    <div className="a-header">A.</div>
-                    { answerVisibility &&  <AnswerContainer /> } 
-                </div>
-                <div className="side-btn-left"
-                    onClick={() => dispatch(showStepOne())}
-                >
-                    <ArrowBackRoundedIcon style={{ fontSize: "2.2rem" }} />
-                </div>
-                <div className="side-btn-right">
-                    <span>Try Another</span> 
-                    <ArrowRightAltRoundedIcon style={{ fontSize: "2.2rem" }} />
-                </div>
+                { answerVisibility &&  <AnswerContainer /> } 
             </div>
         </>
     ); 
@@ -58,7 +58,6 @@ export default QAView;
 
 
 function AnswerContainer() { 
-
     // variants for container 
     const answerContainer = { 
         hidden: { opacity: 0 },
@@ -79,21 +78,38 @@ function AnswerContainer() {
             opacity: 1, 
         }
     }
-    
+
     return (
-        <motion.div className="a-container"
-            variants={answerContainer}
-            initial="hidden"
-            animate="visible"
-        >
-        {letters.map((char, index) => (
-            <motion.span
-                variants={answerChild}
-                key={index}
+        <>
+            <motion.div className="answer-text"
+                variants={answerContainer}
+                initial="hidden"
+                animate="visible" 
             >
-                {char}
-            </motion.span>
-        ))}
-        </motion.div>
+                {letters.map((char, index) => (
+                    <motion.span
+                        variants={answerChild}
+                        key={index}
+                    >
+                        {char}
+                    </motion.span>
+                ))}
+            </motion.div>
+            <motion.div className="try-another-btn"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }} 
+                transition={{ 
+                    duration: 0.5, 
+                    delay: 1.3, 
+                }}
+            >
+                <div>
+                    Try Another
+                </div> 
+                <motion.div style={{ display: "flex", color: "black" }}>
+                    <ArrowRightAltRoundedIcon fontSize="large" style={{  margin: "0" }} />
+                </motion.div> 
+            </motion.div>
+        </>
     ); 
 }
