@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"; 
+import Tesseract from 'tesseract.js';
 
 // css
 import "./FileInput.css"; 
@@ -6,23 +7,27 @@ import "./FileInput.css";
 // components 
 import Button from "./Button"; 
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // reducers 
-import { showStepOne, showQAView } from "../features/view/viewSlice"; 
+import { showStepOne, showVerify } from "../features/view/viewSlice"; 
+import { setScanResults } from "../features/scan/scanSlice"; 
+import { alignProperty } from "@mui/material/styles/cssUtils";
 
 function FileInput() { 
 
     const dispatch = useDispatch(); 
 
+    const extractedText = useSelector(state => state); 
+
     // states 
     const [draggingOver, setDraggingOver] = useState(false); 
     const [regionColor, setRegionColor] = useState("#D9D9D9"); 
+    const [selectedFile, setSelectedFile] = useState();
 
     // refs 
     const fileInputRef = useRef(null); 
 
-    // effects 
     useEffect(() => { 
         if(draggingOver) {
             setRegionColor("rgb(194 191 191)"); 
@@ -48,8 +53,17 @@ function FileInput() {
     }
     const handleDrop = (event) => { 
         event.preventDefault(); 
-        console.log(event); 
         setDraggingOver(false); 
+    }
+    const handleFileChange = (event) => { 
+        setSelectedFile(event.target.files[0]);
+    }
+
+    const ocr = (file) => { 
+        Tesseract.recognize(file, 'eng', {})
+            .then(out => { 
+                dispatch(setScanResults(out.data.text)); 
+            })  
     }
 
     return (
@@ -65,7 +79,7 @@ function FileInput() {
                     onDragLeave={handleDragLeave}
                     style={{backgroundColor: regionColor}} 
                 >
-                    <input type="file" ref={fileInputRef} style={{ display: "none" }} />
+                    <input type="file" ref={fileInputRef} accept="images/*" style={{ display: "none" }} onChange={handleFileChange} />
                     <FileUploadRoundedIcon style={{ fontSize: "3.7rem", color: "rgba(128, 120, 120, 0.8)" }} />
                     <div className="description">
                         <span id="line1">Drag and Drop here</span>
@@ -78,8 +92,11 @@ function FileInput() {
                         onClick={() => dispatch(showStepOne())}
                     >Back</Button>
                     <Button id="next-btn"
-                        onClick={() => dispatch(showQAView())}
-                    >Next</Button>
+                        onClick={() => { 
+                            dispatch(showVerify()); 
+                            ocr(selectedFile); 
+                        }}
+                    >Verify</Button>
                 </div>
             </div>
         </>

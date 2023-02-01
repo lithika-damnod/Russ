@@ -11,6 +11,7 @@ import StepOne from "./components/StepOne";
 import CommonNav from "./components/CommonNav"; 
 import TextInput from "./components/TextInput";
 import FileInput from "./components/FileInput";
+import Verify from './components/Verify';
 import QAView from "./components/QAView";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   const stepOneVisibility = useSelector((state) => state.view.stepone); 
   const textInputVisibility = useSelector((state) => state.view.textinput); 
   const fileInputVisibility = useSelector((state) => state.view.fileinput); 
+  const verifyVisibility = useSelector((state) => state.view.verify); 
   const QAViewVisibility = useSelector((state) => state.view.qaview); 
   
   useEffect(()=> { 
@@ -51,6 +53,13 @@ function App() {
         <>
           <CommonNav />
           <FileInput />
+        </>
+      )}
+
+      { verifyVisibility && (
+        <>
+          <CommonNav />
+          <Verify />
         </>
       )}
 
