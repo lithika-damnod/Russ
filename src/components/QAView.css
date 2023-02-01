@@ -97,3 +97,25 @@
         max-width: 300px; 
     }
 }
+
+
+/* progress view */ 
+.qa-wrapper .progress-view { 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 100%; 
+    max-width: 700px;
+    height: 200px; 
+    margin-top: 2rem; 
+    border: none; 
+    border: 1px solid black; 
+    background-color: #f3f2f28d;
+    resize: none; 
+    overflow-y: scroll; 
+    box-sizing: border-box;
+    font-size: 1.3rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s; 
+}

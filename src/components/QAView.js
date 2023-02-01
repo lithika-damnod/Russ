@@ -1,6 +1,10 @@
 import { motion, useAnimationControls } from "framer-motion"; 
 import { useState } from "react"; 
 import { useDispatch, useSelector } from "react-redux";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+// mui 
+import CircularProgress from '@mui/material/CircularProgress';
 
 // reducers 
 import { showStepOne } from "../features/view/viewSlice"; 
@@ -29,6 +33,7 @@ function QAView() {
     const [question, setQuestion] = useState(""); 
     const [textareaDisability, setTextareaDisability] = useState(false); 
     const [textareaBorderColor, setTextareaBorderColor] = useState("black"); 
+    const [progressVisibility, setProgressVisibility] = useState(false); 
 
     // event handlers 
     const handleSubmitClicks = () => { 
@@ -47,6 +52,7 @@ function QAView() {
         }
         else { 
             setTextareaDisability(true); 
+            setProgressVisibility(true); 
             const endpoint = "https://api.openai.com/v1/completions"; 
             const api_key = process.env.REACT_APP_OPENAI_API_KEY; 
             const data = {
@@ -65,12 +71,21 @@ function QAView() {
                 headers: headers
             })
             .then(function (response) { 
+                setProgressVisibility(false); 
                 letters = Array.from(response.data["choices"][0]["text"]);  
                 setAnswerVisibility(true); 
             })
-
         }
     }
+
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: '#000000',
+                darker: '#000000',
+            },
+        }
+    }); 
 
     return (
         <>
@@ -78,16 +93,32 @@ function QAView() {
                 <div className="prompt">
                     Type your question below
                 </div>
-                <motion.textarea className="question-input"
-                    value={question}
-                    onChange={e => { 
-                        setQuestion(e.target.value); 
-                        setTextareaBorderColor("black"); 
-                    }}
-                    disabled={textareaDisability}
-                    style={{ borderColor: textareaBorderColor }}
-                    animate={errorControls}
-                ></motion.textarea>
+                { progressVisibility && (
+                    <div className="progress-view">
+                        <motion.div
+                            initial={{ opacity: 0}} 
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0, transition: { duration: 2 }}}
+                            transition={{ duration: 2 }}
+                        >
+                            <ThemeProvider theme={theme}>
+                                <CircularProgress disableShrink color="primary" size={60} thickness={2} />
+                            </ThemeProvider>
+                        </motion.div>
+                    </div>
+                )}
+                { !progressVisibility && (
+                    <motion.textarea className="question-input"
+                        value={question}
+                        onChange={e => { 
+                            setQuestion(e.target.value); 
+                            setTextareaBorderColor("black"); 
+                        }}
+                        disabled={textareaDisability}
+                        style={{ borderColor: textareaBorderColor }}
+                        animate={errorControls}
+                    ></motion.textarea>
+                )}
                 <div className="position-controllers">
                     <motion.div className="custom-back-btn"
                         whileHover={{ scale: 1.03 }}
