@@ -21,7 +21,7 @@ function Verify() {
                 <div className="prompt">
                     Please review the text extracted from images for accuracy and legibility.
                 </div>
-                <textarea className="input-textarea" defaultValue={scannedText} onChange={e => setScanResults(e.target.value)}></textarea>
+                <textarea className="input-textarea" defaultValue={scannedText} onChange={e => dispatch(setScanResults(e.target.value))}></textarea>
                 <div className="position-controllers">
                     <Button id="prev-btn" backgroundColor="#000000cf"
                         onClick={() => dispatch(showFileInput())}

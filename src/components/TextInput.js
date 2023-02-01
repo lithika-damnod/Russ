@@ -49,7 +49,7 @@ function TextInput() {
                 </div>
                 <motion.textarea className="input-textarea" onChange={e => {
                         setTextareaValue(e.target.value); 
-                        setScanResults(e.target.value); 
+                        dispatch(setScanResults(e.target.value)); 
                         setTextareaBorderColor("black"); 
                     }}
                     style={{ borderColor: textareaBorderColor }} 
