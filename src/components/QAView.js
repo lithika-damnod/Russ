@@ -1,6 +1,6 @@
 import {motion} from "framer-motion"; 
 import {useState} from "react"; 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // reducers 
 import { showStepOne } from "../features/view/viewSlice"; 
@@ -12,18 +12,44 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 // css 
 import "./QAView.css"; 
+import axios from "axios";
 
-const letters = Array.from("Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquamnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit, quia. Quo neque error repudiandae fuga?"); 
+var letters;  
+
 function QAView() { 
 
     const dispatch = useDispatch(); 
 
+    // redux states
+    const prompt = useSelector((state) => state.scan.text); 
+
     // states 
     const [answerVisibility, setAnswerVisibility] = useState(false); 
+    const [question, setQuestion] = useState(""); 
 
     // event handlers 
     const handleSubmitClicks = () => { 
-        setAnswerVisibility(true); 
+        const endpoint = "https://api.openai.com/v1/completions"; 
+        const api_key = process.env.REACT_APP_OPENAI_API_KEY; 
+        const data = {
+            "model": "text-davinci-003",
+            "prompt": `${prompt}\n\n${question}`,
+            "temperature": 0.5,
+            "max_tokens": 100, 
+            "n": 1, 
+            "logprobs": null,
+        }
+        const headers = {
+            "Authorization": `Bearer ${api_key}`
+        }
+        
+        axios.post(endpoint, data, {
+            headers: headers
+        })
+        .then(function (response) { 
+            letters = Array.from(response.data["choices"][0]["text"]);  
+            setAnswerVisibility(true); 
+        })
     }
 
     return (
@@ -32,7 +58,10 @@ function QAView() {
                 <div className="prompt">
                     Type your question below
                 </div>
-                <textarea className="question-input"></textarea>
+                <textarea className="question-input"
+                    value={question}
+                    onChange={e => setQuestion(e.target.value)}
+                ></textarea>
                 <div className="position-controllers">
                     <motion.div className="custom-back-btn"
                         whileHover={{ scale: 1.03 }}

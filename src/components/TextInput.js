@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 
 // reducers 
 import { showStepOne, showQAView } from "../features/view/viewSlice"; 
+import { setScanResults } from "../features/scan/scanSlice";
 
 // css
 import "./TextInput.css"; 
@@ -17,7 +18,7 @@ function TextInput() {
                 <div className="prompt">
                     Your passage awaits to be unlocked, please type it in the input box provided
                 </div>
-                <textarea className="input-textarea"></textarea>
+                <textarea className="input-textarea" onChange={e => setScanResults(e.target.value)}></textarea>
                 <div className="position-controllers">
                     <Button id="prev-btn" backgroundColor="#000000cf"
                         onClick={() => dispatch(showStepOne())}
