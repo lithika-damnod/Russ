@@ -26,7 +26,7 @@ function TextInput() {
         if(textareaValue==="") { 
             setTextareaBorderColor("#ce0000");
             errorControls.start({
-                x: [3, -4, 3, 0], 
+                x: [8, -9, 8, 0], 
                 transition: { 
                     duration: 0.2, 
                     repeat: 2, 
