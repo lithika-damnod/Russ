@@ -42,6 +42,9 @@
     outline: none !important; 
     box-shadow: 0 0 5px #3c3b3b51; 
 }
+.qa-wrapper .question-input:disabled {
+    color: black; 
+}
 .qa-wrapper .position-controllers { 
     display: flex;
     margin-top: 2.5rem; 

@@ -1,5 +1,5 @@
-import {motion} from "framer-motion"; 
-import {useState} from "react"; 
+import { motion, useAnimationControls } from "framer-motion"; 
+import { useState } from "react"; 
 import { useDispatch, useSelector } from "react-redux";
 
 // reducers 
@@ -19,6 +19,7 @@ var letters;
 function QAView() { 
 
     const dispatch = useDispatch(); 
+    const errorControls = useAnimationControls(); 
 
     // redux states
     const prompt = useSelector((state) => state.scan.text); 
@@ -26,30 +27,49 @@ function QAView() {
     // states 
     const [answerVisibility, setAnswerVisibility] = useState(false); 
     const [question, setQuestion] = useState(""); 
+    const [textareaDisability, setTextareaDisability] = useState(false); 
+    const [textareaBorderColor, setTextareaBorderColor] = useState("black"); 
 
     // event handlers 
     const handleSubmitClicks = () => { 
-        const endpoint = "https://api.openai.com/v1/completions"; 
-        const api_key = process.env.REACT_APP_OPENAI_API_KEY; 
-        const data = {
-            "model": "text-davinci-003",
-            "prompt": `${prompt}\n\n${question}`,
-            "temperature": 0.5,
-            "max_tokens": 100, 
-            "n": 1, 
-            "logprobs": null,
+        if(question === "") { 
+            setTextareaBorderColor("#ce0000");
+            errorControls.start({
+                x: [3, -4, 3, 0], 
+                transition: { 
+                    duration: 0.2, 
+                    repeat: 2, 
+                    type: "spring", 
+                    stiffness: 250, 
+                    damping: 5,
+                }
+            })
         }
-        const headers = {
-            "Authorization": `Bearer ${api_key}`
+        else { 
+            setTextareaDisability(true); 
+            const endpoint = "https://api.openai.com/v1/completions"; 
+            const api_key = process.env.REACT_APP_OPENAI_API_KEY; 
+            const data = {
+                "model": "text-davinci-003",
+                "prompt": `${prompt}\n\n${question}`,
+                "temperature": 0.5,
+                "max_tokens": 100, 
+                "n": 1, 
+                "logprobs": null,
+            }
+            const headers = {
+                "Authorization": `Bearer ${api_key}`
+            }
+
+            axios.post(endpoint, data, {
+                headers: headers
+            })
+            .then(function (response) { 
+                letters = Array.from(response.data["choices"][0]["text"]);  
+                setAnswerVisibility(true); 
+            })
+
         }
-        
-        axios.post(endpoint, data, {
-            headers: headers
-        })
-        .then(function (response) { 
-            letters = Array.from(response.data["choices"][0]["text"]);  
-            setAnswerVisibility(true); 
-        })
     }
 
     return (
@@ -58,10 +78,16 @@ function QAView() {
                 <div className="prompt">
                     Type your question below
                 </div>
-                <textarea className="question-input"
+                <motion.textarea className="question-input"
                     value={question}
-                    onChange={e => setQuestion(e.target.value)}
-                ></textarea>
+                    onChange={e => { 
+                        setQuestion(e.target.value); 
+                        setTextareaBorderColor("black"); 
+                    }}
+                    disabled={textareaDisability}
+                    style={{ borderColor: textareaBorderColor }}
+                    animate={errorControls}
+                ></motion.textarea>
                 <div className="position-controllers">
                     <motion.div className="custom-back-btn"
                         whileHover={{ scale: 1.03 }}
