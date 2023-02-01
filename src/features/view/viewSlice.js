@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 export const viewSlice= createSlice({
     name: 'view',
     initialState: {
-        hero: false, 
+        hero: true, 
         stepone: false, 
-        textinput: true, 
+        textinput: false, 
         fileinput: false,  
         verify: false, 
         qaview: false, 
