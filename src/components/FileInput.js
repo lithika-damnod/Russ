@@ -7,18 +7,15 @@ import "./FileInput.css";
 // components 
 import Button from "./Button"; 
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // reducers 
 import { showStepOne, showVerify } from "../features/view/viewSlice"; 
 import { setScanResults } from "../features/scan/scanSlice"; 
-import { alignProperty } from "@mui/material/styles/cssUtils";
 
 function FileInput() { 
 
     const dispatch = useDispatch(); 
-
-    const extractedText = useSelector(state => state); 
 
     // states 
     const [draggingOver, setDraggingOver] = useState(false); 
