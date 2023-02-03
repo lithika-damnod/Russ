@@ -39,12 +39,14 @@ function App() {
         { heroVisibility && <Hero />}
       </AnimatePresence>
 
-      { stepOneVisibility && (
-        <>
-          <CommonNav />
-          <StepOne /> 
-        </>
-      )}
+      <AnimatePresence>
+        { stepOneVisibility && (
+          <>
+            <CommonNav />
+            <StepOne /> 
+          </>
+        )}
+      </AnimatePresence>
 
       { textInputVisibility && (
         <>
