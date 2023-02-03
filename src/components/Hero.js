@@ -1,4 +1,3 @@
-import { useState } from "react"; 
 import { motion } from "framer-motion"; 
 import { useDispatch } from "react-redux";
 import ReactGA from "react-ga"; 
@@ -14,9 +13,6 @@ function Hero() {
 
     const dispatch = useDispatch(); 
 
-    // states 
-    const [maskOverlayVisibility, setMaskOverlayVisibility] = useState(false); 
-
     // event handlers
     const handleTryButtonClick = () => { 
         // TODO: disable pointer events for the button 
@@ -26,13 +22,15 @@ function Hero() {
             action: 'Clicked on Try It Button'
         })
 
-        setMaskOverlayVisibility(!maskOverlayVisibility); 
         dispatch(showStepOne()); // change view 
     }
 
     return (
         <>
-            <div className="hero-wrapper">
+            <motion.div className="hero-wrapper"
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10, transition: { duration: 0.13 } }}
+            >
                 <div className="hero-container">
                     <motion.div className="headline"
                         initial={{ opacity: 0, y: 10 }}
@@ -75,23 +73,9 @@ function Hero() {
                         </motion.div>
                     </motion.div>
                 </div>
-            </div>
-            { maskOverlayVisibility &&  <MaskOverlay /> } 
+            </motion.div>
         </>
     )
 }
 
 export default Hero; 
-
-
-function MaskOverlay() { 
-    return(
-        <motion.div className="mask-overlay"
-            initial={{ height: 0 }} 
-            animate={{ height: [0, window.innerHeight, 0], bottom: [null, 0, 0]}}
-            exit={{ height: [0, window.innerHeight, 0], top: [null, 0, 0]}}
-            transition={{ duration: 2.5, times: [0, 0.5, 1]}}
-        >
-        </motion.div>
-    ); 
-}

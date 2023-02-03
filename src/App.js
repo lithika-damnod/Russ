@@ -13,6 +13,7 @@ import TextInput from "./components/TextInput";
 import FileInput from "./components/FileInput";
 import Verify from './components/Verify';
 import QAView from "./components/QAView";
+import { AnimatePresence } from 'framer-motion';
 
 
 function App() {
@@ -34,7 +35,9 @@ function App() {
   return (
     <div className="main-wrapper">
 
-      { heroVisibility && <Hero />}
+      <AnimatePresence>
+        { heroVisibility && <Hero />}
+      </AnimatePresence>
 
       { stepOneVisibility && (
         <>
