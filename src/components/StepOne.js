@@ -79,7 +79,7 @@ function StepOne() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5, delay: 0.35, ease:"easeInOut" }}
+                            transition={{ duration: 0.3, delay: 0.35, ease:"easeInOut" }}
                         >
                             <KeyboardAltRoundedIcon style={{ fontSize: "3rem" }} />
                         </motion.div>

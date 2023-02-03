@@ -33,11 +33,11 @@ function FileInput() {
             opacity: 1, 
             transition: {
                 duration: 0.1,
-                delay: 0.15, 
+                delay: 0.2, 
                 ease:"easeInOut",
             }
         })
-    }, [])
+    }, [errorControls])
 
     useEffect(() => { 
         if(draggingOver) {
@@ -101,7 +101,10 @@ function FileInput() {
 
     return (
         <>
-            <motion.div className="file-input-wrapper">
+            <motion.div className="file-input-wrapper"
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10, transition: { duration: 0.075 } }}
+            >
                 <motion.div className="prompt"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}

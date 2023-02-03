@@ -55,12 +55,14 @@ function App() {
         </>
       )}
 
-      { fileInputVisibility && (
-        <>
-          <CommonNav />
-          <FileInput />
-        </>
-      )}
+      <AnimatePresence>
+        { fileInputVisibility && (
+          <>
+            <CommonNav />
+            <FileInput />
+          </>
+        )}
+      </AnimatePresence>
 
       { verifyVisibility && (
         <>
