@@ -29,6 +29,17 @@ function FileInput() {
     const fileInputRef = useRef(null); 
 
     useEffect(() => { 
+        errorControls.start({
+            opacity: 1, 
+            transition: {
+                duration: 0.1,
+                delay: 0.15, 
+                ease:"easeInOut",
+            }
+        })
+    }, [])
+
+    useEffect(() => { 
         if(draggingOver) {
             setRegionColor("rgb(194 191 191)"); 
         }
@@ -90,17 +101,24 @@ function FileInput() {
 
     return (
         <>
-            <div className="file-input-wrapper">
-                <div className="prompt">
+            <motion.div className="file-input-wrapper">
+                <motion.div className="prompt"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 20, opacity: 0, transition: { duration: 0.1 }}}
+                    transition={{ duration: 0.2, delay: 0.15, }}
+                >
                     Snap a photo of your passage and drag it here to upload
-                </div>
+                </motion.div>
                 <motion.div className="file-drop-region"
                     onClick={handleFileInputs}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     style={{backgroundColor: regionColor, borderColor: regionBorderColor}} 
+                    initial={{ opacity: 0 }}
                     animate={errorControls}
+                    exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.3, ease:"easeInOut"  }}}
                 >
                     <input type="file" ref={fileInputRef} accept="image/png, image/jpeg" style={{ display: "none" }} onChange={handleFileChange} />
                     <FileUploadRoundedIcon style={{ fontSize: "3.7rem", color: "rgba(128, 120, 120, 0.8)" }} />
@@ -111,12 +129,35 @@ function FileInput() {
                     </div>
                 </motion.div>
                 <div className="position-controllers">
-                    <Button id="prev-btn" backgroundColor="#000000cf"
-                        onClick={() => dispatch(showStepOne())}
-                    >Back</Button>
-                    <Button id="next-btn" onClick={validateUserInput}>Verify</Button>
+                    <motion.span style={{ margin: 0}}
+                        initial={{ y: 40 }}
+                        animate={{ y: 0 }}
+                        exit={{ y: 40, opacity: 0 }}
+                        transition={{ 
+                            type: "spring", 
+                            stiffness: 200, 
+                            damping: 17,
+                        }} 
+                    >
+                        <Button id="prev-btn" backgroundColor="#000000cf"
+                            onClick={() => dispatch(showStepOne())}
+                        >Back</Button>
+                    </motion.span>
+                    <motion.span style={{ margin: 0}}
+                        initial={{ y: 40 }}
+                        animate={{ y: 0 }}
+                        exit={{ y: 40, opacity: 0 }}
+                        transition={{ 
+                            type: "spring", 
+                            stiffness: 200, 
+                            damping: 17,
+                            delay: 0.025,
+                        }} 
+                    >
+                        <Button id="next-btn" onClick={validateUserInput}>Verify</Button>
+                    </motion.span>
                 </div>
-            </div>
+            </motion.div>
         </>
     )
 }
