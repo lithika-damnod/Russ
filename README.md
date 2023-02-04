@@ -11,7 +11,6 @@ Get instant answers to your questions about any text with Russ - an AI-powered r
 <img src="https://img.shields.io/website?style=for-the-badge&url=https%3A%2F%2Fruss-chatgpt.netlify.app%2F">
 <img src="https://img.shields.io/github/stars/lithika-damnod/Russ?style=for-the-badge">
 <img src="https://img.shields.io/github/license/lithika-damnod/Russ?style=for-the-badge">
-<img src="https://img.shields.io/github/issues-pr-closed-raw/lithika-damnod/Russ?style=for-the-badge">
 </div>
 <br>
 <img width="1466" alt="image" src="https://user-images.githubusercontent.com/61654812/215338006-80d60048-cf0d-4fd9-a613-7ccf09acd6d5.png">
