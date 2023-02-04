@@ -100,14 +100,7 @@ function QAView() {
     }, [errorControls])
 
     useEffect(() => { 
-        if(progressVisibility === true) { 
-            setTimeout(() => { 
-                letters = Array.from("lithika damnod bandara dasanayaka"); 
-                setProgressVisibility(false); 
-                setAnswerVisibility(true); 
-            }, 3000)
-        }
-        else { 
+        if(progressVisibility === false) { 
             errorControls.start({ 
                 opacity: 1,
             })
