@@ -75,12 +75,14 @@ function App() {
         )}
       </AnimatePresence>
 
-      { QAViewVisibility && (
-        <>
-          <CommonNav />
-          <QAView />
-        </>
-      )}
+      <AnimatePresence>
+        { QAViewVisibility && (
+          <>
+            <CommonNav />
+            <QAView />
+          </>
+        )}
+      </AnimatePresence>
 
     </div> 
   );

@@ -1,5 +1,5 @@
 import { motion, useAnimationControls } from "framer-motion"; 
-import { useState } from "react"; 
+import { useEffect, useState } from "react"; 
 import { useDispatch, useSelector } from "react-redux";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -87,12 +87,41 @@ function QAView() {
         }
     }); 
 
+    // effects
+    useEffect(() => { 
+        errorControls.start({
+            opacity: 1, 
+            transition: {
+                duration: 0.1,
+                delay: 0.2, 
+                ease:"easeInOut",
+            }
+        })
+    }, [errorControls])
+
+    useEffect(() => { 
+        if(progressVisibility === false) { 
+            errorControls.start({ 
+                opacity: 1,
+            })
+        }
+    }, [progressVisibility, errorControls])
+
+
     return (
         <>
-            <div className="qa-wrapper">
-                <div className="prompt">
+            <motion.div className="qa-wrapper"
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10, transition: { duration: 0.075 } }}
+            >
+                <motion.div className="prompt"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 20, opacity: 0, transition: { duration: 0.1 }}}
+                    transition={{ duration: 0.2, delay: 0.15, }}
+                >
                     Type your question below
-                </div>
+                </motion.div>
                 { progressVisibility && (
                     <div className="progress-view">
                         <motion.div
@@ -116,10 +145,20 @@ function QAView() {
                         }}
                         disabled={textareaDisability}
                         style={{ borderColor: textareaBorderColor }}
+                        initial={{ opacity: 0 }}
                         animate={errorControls}
                     ></motion.textarea>
                 )}
-                <div className="position-controllers">
+                <motion.div className="position-controllers"
+                    initial={{ y: 40 }}
+                    animate={{ y: 0 }}
+                    exit={{ opacity: 0, transition: { duration: 0.1, delay: 2 } }}
+                    transition={{ 
+                        type: "spring", 
+                        stiffness: 200, 
+                        damping: 17,
+                    }} 
+                >
                     <motion.div className="custom-back-btn"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.9 }}
@@ -133,9 +172,9 @@ function QAView() {
                         <ArrowBackRoundedIcon style={{ color: "white" }} /> 
                     </motion.div>
                     <Button id="submit-btn" fontSize="1rem" borderRadius="0" onClick={handleSubmitClicks} >See Answer</Button>
-                </div>
+                </motion.div>
                 { answerVisibility &&  <AnswerContainer /> } 
-            </div>
+            </motion.div>
         </>
     ); 
 }
@@ -184,6 +223,7 @@ function AnswerContainer() {
             <motion.div className="try-another-btn"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }} 
+                exit={{ opacity: 0, transition: { duration: 0.05, delay: 0 } }}
                 transition={{ 
                     duration: 0.5, 
                     delay: 1.3, 
