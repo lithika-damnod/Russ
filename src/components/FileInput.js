@@ -121,7 +121,7 @@ function FileInput() {
                     style={{backgroundColor: regionColor, borderColor: regionBorderColor}} 
                     initial={{ opacity: 0 }}
                     animate={errorControls}
-                    exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.3, ease:"easeInOut"  }}}
+                    exit={{ opacity: 0, transition: { duration: 0.1, delay: 0.1, ease:"easeInOut"  }}}
                 >
                     <input type="file" ref={fileInputRef} accept="image/png, image/jpeg" style={{ display: "none" }} onChange={handleFileChange} />
                     <FileUploadRoundedIcon style={{ fontSize: "3.7rem", color: "rgba(128, 120, 120, 0.8)" }} />

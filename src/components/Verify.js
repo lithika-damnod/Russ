@@ -42,12 +42,31 @@ function Verify() {
 
     return (
         <>
-            <div className="text-input-wrapper">
-                <div className="prompt">
+            <motion.div className="text-input-wrapper"
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10, transition: { duration: 0.075 } }}
+            >
+                <motion.div className="prompt"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 20, opacity: 0, transition: { duration: 0.1 }}}
+                    transition={{ duration: 0.2, delay: 0.15, }}
+                >
                     Please review the text extracted from images for accuracy and legibility.
-                </div>
+                </motion.div>
                 { progressVisibility && (
-                    <div className="progress-wrapper">
+                    <motion.div className="progress-wrapper"
+                        initial={{ opacity: 0 }}
+                        animate={{
+                            opacity: 1, 
+                            transition: {
+                                duration: 0.1,
+                                delay: 0.2, 
+                                ease:"easeInOut",
+                            }
+                         }}
+                        exit={{ opacity: 0, transition: { duration: 0.1 }}}
+                    >
                         <motion.div
                             initial={{ opacity: 0}} 
                             animate={{ opacity: 1 }}
@@ -58,24 +77,48 @@ function Verify() {
                                 <CircularProgress disableShrink color="primary" size={60} thickness={2} />
                             </ThemeProvider>
                         </motion.div>
-                    </div>
+                    </motion.div>
                 )}
                 { !progressVisibility && (
                     <motion.textarea className="input-textarea" defaultValue={scannedText} onChange={e => dispatch(setScanResults(e.target.value))}
                         initial={{ opacity: 0}} 
                         animate={{ opacity: 1 }}
+                        exit={{ opacity: 0, transition: { duration: 0.1 }}}
                         transition={{ duration: 0.5 }}
                     ></motion.textarea>
                 )}
                 <div className="position-controllers">
-                    <Button id="prev-btn" backgroundColor="#000000cf"
-                        onClick={() => dispatch(showFileInput())}
-                    >Back</Button>
-                    <Button id="next-btn"
-                        onClick={() => dispatch(showQAView())}
-                    >Next</Button>
+                    <motion.span style={{ margin: 0 }}
+                        initial={{ y: 40 }}
+                        animate={{ y: 0 }}
+                        exit={{ y: 40, opacity: 0 }}
+                        transition={{ 
+                            type: "spring", 
+                            stiffness: 200, 
+                            damping: 17,
+                        }} 
+                    >
+                        <Button id="prev-btn" backgroundColor="#000000cf"
+                            onClick={() => dispatch(showFileInput())}
+                        >Back</Button>
+                    </motion.span>
+                    <motion.span style={{ margin: 0 }}
+                        initial={{ y: 40 }}
+                        animate={{ y: 0 }}
+                        exit={{ y: 40, opacity: 0 }}
+                        transition={{ 
+                            type: "spring", 
+                            stiffness: 200, 
+                            damping: 17,
+                            delay: 0.025,
+                        }} 
+                    >
+                        <Button id="next-btn"
+                            onClick={() => dispatch(showQAView())}
+                        >Next</Button>
+                    </motion.span>
                 </div>
-            </div>
+            </motion.div>
         </>
     )
 }

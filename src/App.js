@@ -48,12 +48,14 @@ function App() {
         )}
       </AnimatePresence>
 
-      { textInputVisibility && (
-        <>
-          <CommonNav />
-          <TextInput />
-        </>
-      )}
+      <AnimatePresence>
+        { textInputVisibility && (
+          <>
+            <CommonNav />
+            <TextInput />
+          </>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         { fileInputVisibility && (
@@ -64,12 +66,14 @@ function App() {
         )}
       </AnimatePresence>
 
-      { verifyVisibility && (
-        <>
-          <CommonNav />
-          <Verify />
-        </>
-      )}
+      <AnimatePresence>
+        { verifyVisibility && (
+          <>
+            <CommonNav />
+            <Verify />
+          </>
+        )}
+      </AnimatePresence>
 
       { QAViewVisibility && (
         <>
