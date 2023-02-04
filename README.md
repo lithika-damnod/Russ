@@ -3,7 +3,7 @@
 </p>
 
 <h3 align="center" >
-Get instant answers to your questions about any text with Passage Q&A - an AI-powered reading companion that analyzes and summarizes any text you provide and answer questions based on the information in the passage
+Get instant answers to your questions about any text with Russ - an AI-powered reading companion that analyzes and summarizes any text you provide and answer questions based on the information in the passage
 </h3>
 
 <br>
