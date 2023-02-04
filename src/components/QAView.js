@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // reducers 
-import { showStepOne } from "../features/view/viewSlice"; 
+import { showStepOne, showQAView } from "../features/view/viewSlice"; 
 
 // components
 import Button from "./Button"; 
@@ -100,7 +100,14 @@ function QAView() {
     }, [errorControls])
 
     useEffect(() => { 
-        if(progressVisibility === false) { 
+        if(progressVisibility === true) { 
+            setTimeout(() => { 
+                letters = Array.from("lithika damnod bandara dasanayaka"); 
+                setProgressVisibility(false); 
+                setAnswerVisibility(true); 
+            }, 3000)
+        }
+        else { 
             errorControls.start({ 
                 opacity: 1,
             })
@@ -152,7 +159,7 @@ function QAView() {
                 <motion.div className="position-controllers"
                     initial={{ y: 40 }}
                     animate={{ y: 0 }}
-                    exit={{ opacity: 0, transition: { duration: 0.1, delay: 2 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.05, delay: 0 } }}
                     transition={{ 
                         type: "spring", 
                         stiffness: 200, 
@@ -183,6 +190,9 @@ export default QAView;
 
 
 function AnswerContainer() { 
+
+    const dispatch = useDispatch(); 
+
     // variants for container 
     const answerContainer = { 
         hidden: { opacity: 0 },
@@ -228,6 +238,7 @@ function AnswerContainer() {
                     duration: 0.5, 
                     delay: 1.3, 
                 }}
+                onClick={() => dispatch(showQAView())} 
             >
                 <div>
                     Try Another
