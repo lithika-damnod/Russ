@@ -70,6 +70,10 @@ function FileInput() {
     const handleDrop = (event) => { 
         event.preventDefault(); 
         setDraggingOver(false); 
+
+        if (event.dataTransfer.files && event.dataTransfer.files[0]) {
+            setSelectedFile(event.dataTransfer.files[0]); 
+        }
     }
     const handleFileChange = (event) => { 
         setSelectedFile(event.target.files[0]);
