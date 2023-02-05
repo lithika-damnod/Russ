@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 // reducers 
 import { showStepOne, showVerify } from "../features/view/viewSlice"; 
 import { setScanResults } from "../features/scan/scanSlice"; 
+import { setStepOneHistory } from "../features/history/historySlice"; 
 
 function FileInput() { 
 
@@ -47,6 +48,10 @@ function FileInput() {
             setRegionColor("#D9D9D9"); 
         }
     }, [draggingOver])
+
+    useEffect(() => { 
+        dispatch(setStepOneHistory("file")); 
+    }, [dispatch])
 
     // event handlers 
     const handleFileInputs = () => { 

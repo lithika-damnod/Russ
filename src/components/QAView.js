@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // reducers 
-import { showStepOne } from "../features/view/viewSlice"; 
+import { showVerify, showTextInput } from "../features/view/viewSlice"; 
 import { toggleRefresh } from "../features/refresh/refreshSlice"; 
 
 // components
@@ -29,6 +29,7 @@ function QAView() {
     // redux states
     const prompt = useSelector((state) => state.scan.text); 
     const refresh = useSelector((state) => state.refresh.refresh); 
+    const stepOneHistory = useSelector((state) => state.history.stepOne); 
 
     // states 
     const [answerVisibility, setAnswerVisibility] = useState(false); 
@@ -178,7 +179,14 @@ function QAView() {
                             stiffness: 200, 
                             damping: 17,
                         }} 
-                        onClick={() => dispatch(showStepOne())}
+                        onClick={() => {
+                            if(stepOneHistory === "text") {
+                                dispatch(showTextInput()); 
+                            }
+                            else { 
+                                dispatch(showVerify()); 
+                            }
+                        }}
                     >
                         <ArrowBackRoundedIcon style={{ color: "white" }} /> 
                     </motion.div>

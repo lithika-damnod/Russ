@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 // reducers 
 import { showStepOne, showQAView } from "../features/view/viewSlice"; 
 import { setScanResults } from "../features/scan/scanSlice";
+import { setStepOneHistory } from "../features/history/historySlice";
 
 // css
 import "./TextInput.css"; 
@@ -27,6 +28,10 @@ function TextInput() {
             }
         })
     }, [errorControls])
+
+    useEffect(() => { 
+        dispatch(setStepOneHistory("text")); 
+    }, [dispatch])
 
     // states 
     const [textareaBorderColor, setTextareaBorderColor] = useState("black"); 
