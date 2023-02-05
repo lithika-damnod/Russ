@@ -1,4 +1,4 @@
-import { motion, useAnimationControls } from "framer-motion"; 
+import { AnimatePresence, motion, useAnimationControls } from "framer-motion"; 
 import { useEffect, useState } from "react"; 
 import { useDispatch, useSelector } from "react-redux";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -7,7 +7,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // reducers 
-import { showStepOne, showQAView } from "../features/view/viewSlice"; 
+import { showStepOne } from "../features/view/viewSlice"; 
+import { toggleRefresh } from "../features/refresh/refreshSlice"; 
 
 // components
 import Button from "./Button"; 
@@ -18,7 +19,7 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import "./QAView.css"; 
 import axios from "axios";
 
-var letters;  
+var letters = Array.from("lithika damnod bandara dasanayaka lithika damnod bandara dasanayaka");  
 
 function QAView() { 
 
@@ -27,6 +28,7 @@ function QAView() {
 
     // redux states
     const prompt = useSelector((state) => state.scan.text); 
+    const refresh = useSelector((state) => state.refresh.refresh); 
 
     // states 
     const [answerVisibility, setAnswerVisibility] = useState(false); 
@@ -52,7 +54,7 @@ function QAView() {
         }
         else { 
             setTextareaDisability(true); 
-            setProgressVisibility(true); 
+            setProgressVisibility(true);  
             const endpoint = "https://api.openai.com/v1/completions"; 
             const api_key = process.env.REACT_APP_OPENAI_API_KEY; 
             const data = {
@@ -106,6 +108,15 @@ function QAView() {
             })
         }
     }, [progressVisibility, errorControls])
+
+    useEffect(() => { 
+        if(refresh === true) { 
+            setQuestion("");   // set the current value in the textarea to an empty string
+            setTextareaDisability(false);   
+            setAnswerVisibility(false); 
+            dispatch(toggleRefresh()); 
+        }
+    }, [refresh, dispatch])
 
 
     return (
@@ -173,7 +184,9 @@ function QAView() {
                     </motion.div>
                     <Button id="submit-btn" fontSize="1rem" borderRadius="0" onClick={handleSubmitClicks} >See Answer</Button>
                 </motion.div>
-                { answerVisibility &&  <AnswerContainer /> } 
+                <AnimatePresence>
+                    { answerVisibility &&  <AnswerContainer /> } 
+                </AnimatePresence>
             </motion.div>
         </>
     ); 
@@ -213,6 +226,7 @@ function AnswerContainer() {
                 variants={answerContainer}
                 initial="hidden"
                 animate="visible" 
+                exit={{ opacity: 0 }}
             >
                 {letters.map((char, index) => (
                     <motion.span
@@ -231,7 +245,7 @@ function AnswerContainer() {
                     duration: 0.5, 
                     delay: 1.3, 
                 }}
-                onClick={() => dispatch(showQAView())} 
+                onClick={() => dispatch(toggleRefresh())} 
             >
                 <div>
                     Try Another
