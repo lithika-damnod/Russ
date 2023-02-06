@@ -14,7 +14,7 @@ Get instant answers to your questions about any text with Russ - an AI-powered r
 <h4>
     <a href="https://russ-chatgpt.netlify.app">View Demo</a>
   <span> · </span>
-    <a href="#usage">Documentation</a>
+    <a href="#triangular_flag_on_post--usage">Documentation</a>
   <span> · </span>
     <a href="https://github.com/lithika-damnod/Russ/issues">Report Bug</a>
   <span> · </span>
@@ -28,16 +28,16 @@ Get instant answers to your questions about any text with Russ - an AI-powered r
 
 # :notebook_with_decorative_cover: &nbsp; Table of Contents
 
-- [About the Project](#star2-about-the-project)
-  - [What is Russ ? ](#usecases)
-  - [Tech Stack](#space_invader-tech-stack)
-  - [Usage](#usage)
-- [Getting Started](#toolbox-getting-started)
-  - [Env File Format](#env-format)
-  - [Run Locally](#running-run-locally)
+- [About the Project](#star2--about-the-project)
+  - [What is Russ ? ](#question-what-is-russ-)
+  - [Tech Stack](#space_invader--tech-stack)
+  - [Usage](#triangular_flag_on_post--usage)
+- [Getting Started](#toolbox--getting-started)
+  - [.env File Format](#key--environment-variables)
+  - [Run Locally](#running--run-locally)
 - [FAQ](#grey_question-faq)
-- [License](#warning-license)
-- [Contact](#handshake-contact)
+- [License](#warning--license)
+- [Contact](#handshake--contact)
 
 <br>
 <!-- About the Project -->
@@ -79,7 +79,7 @@ Russ is an AI-powered reading companion app that can analyze and summarize any t
 
 <br>
 
-#### 1. Click on "Try It" button for more options
+#### * Click on "Try It" button for more options
 
 #### Options &nbsp; :arrow_upper_right:
 
