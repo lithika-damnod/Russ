@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import ReactGA from "react-ga"; 
 
 // css 
 import './App.css';
@@ -9,7 +11,10 @@ import StepOne from "./components/StepOne";
 import CommonNav from "./components/CommonNav"; 
 import TextInput from "./components/TextInput";
 import FileInput from "./components/FileInput";
+import Verify from './components/Verify';
 import QAView from "./components/QAView";
+import { AnimatePresence } from 'framer-motion';
+
 
 function App() {
 
@@ -18,48 +23,66 @@ function App() {
   const stepOneVisibility = useSelector((state) => state.view.stepone); 
   const textInputVisibility = useSelector((state) => state.view.textinput); 
   const fileInputVisibility = useSelector((state) => state.view.fileinput); 
+  const verifyVisibility = useSelector((state) => state.view.verify); 
   const QAViewVisibility = useSelector((state) => state.view.qaview); 
   
-  console.log({
-      "hero": heroVisibility, 
-      "firststep": stepOneVisibility, 
-      "textinput": textInputVisibility ,
-      "fileinput": fileInputVisibility, 
-      "qaview": QAViewVisibility, 
-  }); 
+  useEffect(()=> { 
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID)
+    ReactGA.pageview('/')
+  }, [])
+
 
   return (
     <div className="main-wrapper">
 
-      { heroVisibility && <Hero />}
+      <AnimatePresence>
+        { heroVisibility && <Hero />}
+      </AnimatePresence>
 
-      { stepOneVisibility && (
-        <>
-          <CommonNav />
-          <StepOne /> 
-        </>
-      )}
+      <AnimatePresence>
+        { stepOneVisibility && (
+          <>
+            <CommonNav />
+            <StepOne /> 
+          </>
+        )}
+      </AnimatePresence>
 
-      { textInputVisibility && (
-        <>
-          <CommonNav />
-          <TextInput />
-        </>
-      )}
+      <AnimatePresence>
+        { textInputVisibility && (
+          <>
+            <CommonNav />
+            <TextInput />
+          </>
+        )}
+      </AnimatePresence>
 
-      { fileInputVisibility && (
-        <>
-          <CommonNav />
-          <FileInput />
-        </>
-      )}
+      <AnimatePresence>
+        { fileInputVisibility && (
+          <>
+            <CommonNav />
+            <FileInput />
+          </>
+        )}
+      </AnimatePresence>
 
-      { QAViewVisibility && (
-        <>
-          <CommonNav />
-          <QAView />
-        </>
-      )}
+      <AnimatePresence>
+        { verifyVisibility && (
+          <>
+            <CommonNav />
+            <Verify />
+          </>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        { QAViewVisibility && (
+          <>
+            <CommonNav />
+            <QAView />
+          </>
+        )}
+      </AnimatePresence>
 
     </div> 
   );

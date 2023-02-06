@@ -1,4 +1,4 @@
-
+import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 
 // reducers 
@@ -11,13 +11,17 @@ function CommonNav() {
     const dispatch = useDispatch(); 
     return (
         <>
-            <div className="nav">
+            <motion.div className="nav"
+                exit={{ opacity: 0, transition: { duration: 0.1 }}}
+            >
                 <div className="logo"
                     onClick={() => dispatch(showHero())} 
                 >Russ</div>
-            </div>
+            </motion.div>
             <div className="horizontal-divider-wrapper">
-                <div className="horizontal-divider"></div>
+                <motion.div className="horizontal-divider"
+                    exit={{ opacity: 0, transition: { duration: 0.1 }}}
+                ></motion.div>
             </div> 
         </>
     ); 
