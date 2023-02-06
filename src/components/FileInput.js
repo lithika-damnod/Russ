@@ -75,10 +75,13 @@ function FileInput() {
         }
     }, [overlayProgressVisibility])
 
+
     // event handlers 
     const handleFileInputs = () => { 
         // open file  ( file-explorer or finder .. )
-        fileInputRef.current.click();
+        if(!overlayVisibility) {
+            fileInputRef.current.click();
+        }
     }
 
     const handleDragOver = (event) => { 
@@ -97,6 +100,7 @@ function FileInput() {
             setSelectedFile(event.dataTransfer.files[0]); 
             setOverlayVisibility(true); 
             setOverlayProgressVisibility(true); 
+            dispatch(setScanResults("")); 
         }
     }
     const handleFileChange = (event) => { 
@@ -104,6 +108,7 @@ function FileInput() {
         setRegionBorderColor("black"); 
         setOverlayVisibility(true); 
         setOverlayProgressVisibility(true); 
+        dispatch(setScanResults("")); 
     }
 
     const ocr = (file) => { 
