@@ -36,7 +36,53 @@
     justify-content: center;
     padding: 0.8rem 0 0.8rem 0; 
     transition: all ease-out 0.3s; 
+    position: relative; 
 }
+
+.file-input-wrapper .file-drop-region .overlay{ 
+    position: absolute;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    height: 100%; 
+    background-color: #dadada;
+    cursor: default;
+}
+
+.file-input-wrapper .file-drop-region .overlay .file-selected-status { 
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    height: 100%; 
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem 0 1rem; 
+}
+.file-input-wrapper .file-drop-region .overlay .file-selected-status .filename-board { 
+    padding: 0.4rem; 
+    background-color: rgba(255, 255, 255, 0.256);
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    text-align: center;
+}
+.file-input-wrapper .file-drop-region .overlay .file-selected-status .reset-btn {
+    margin: 0.8rem; 
+    padding: 0.4rem; 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: rgba(147, 147, 147, 0.256);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem; 
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.223); 
+    transition: all ease-out 0.3s; 
+    cursor: pointer; 
+} 
+.file-input-wrapper .file-drop-region .overlay .file-selected-status .reset-btn:hover {
+    background-color: rgba(147, 147, 147, 0.143);
+}
+
 .file-input-wrapper .file-drop-region .description { 
     display: flex;
     flex-direction: column; 
